@@ -32,8 +32,8 @@ import dagger.Provides;
 
 /**
 * @author daniel giribet
-*//////////////////////////////////////////////////////////////////////////////
-@Module
+*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+@Module(subcomponents=RequestComponent.class)
 public class DocumentModule {
 
 private String name;
@@ -45,21 +45,24 @@ public DocumentModule(String name) {
 
 
 @Provides
-Document provideDocument(URI u, @Named("Content") String content) {
+Document provideDocument(URI u, @Named("Content") String content ) { //, Metadata m) {
 	return new Document(name, u, content);
-	
 }
 
 
 @Provides @Named("ContentRequest") 
-public Request provideContentRequest(RequestComponent.Builder rcb, URI uri) {
-	RequestComponent requestBuilder;
+public Request provideContentRequest(Provider<RequestComponent.Builder> rcp, URI uri) {
+	
 	try {
-		requestBuilder = rcb.forURI(new URIModule(uri.toString())).build();
+		
+		String uriStr = uri.toString();
+		URIModule uriModule = new URIModule(uriStr);
+		return rcp.get().forURI(new URIModule(uri.toString())).build().get();
+	
 	} catch (Exception e) {
 		throw new RuntimeException(e);
 	}
-	return requestBuilder.get();
+
 }
 
 

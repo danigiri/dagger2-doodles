@@ -49,7 +49,7 @@ public String performRequest() throws RequestException {
 		throw new RequestException("Could not complete request");
 	}
 	
-	return "requested("+uri+")";
+	return "requested:{"+uri+"}";
 
 }
 

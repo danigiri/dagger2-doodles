@@ -34,7 +34,7 @@ public String parse(String s) throws ParseException {
 		throw new ParseException("Parse error");
 	}
 
-	return s.toLowerCase();
+	return "parsed:{"+s+"}";
 
 }
 

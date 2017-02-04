@@ -16,25 +16,12 @@
 
 package cat.calidos.doodles.dagger2.basic;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.net.URI;
-import java.net.URISyntaxException;
-
-import cat.calidos.doodles.dagger2.basic.RequestComponent.Builder;
-import cat.calidos.doodles.dagger2.dependencies.Request;
 import dagger.Module;
-import dagger.Provides;
 
 /**
 * @author daniel giribet
 *///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 @Module
-public class RequestModule {
-
-@Provides
-Request provideRequest(URI uri) {
-	return new Request(uri);
-}
+public class MetadataModule {
 
 }

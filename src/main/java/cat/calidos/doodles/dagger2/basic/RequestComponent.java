@@ -25,14 +25,15 @@ import dagger.Subcomponent;
 /**
 * @author daniel giribet
 *///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-@Component(modules={RequestModule.class,URIModule.class})
+@Subcomponent(modules={RequestModule.class,URIModule.class})
 public interface RequestComponent {
 
 Request get();
-RequestComponent.Builder getBuilder();
+//RequestComponent.Builder getBuilder();
 
-@Component.Builder 
+@Subcomponent.Builder 
 public interface Builder {
+//	Builder requestModule(RequestModule m);
 	Builder forURI(URIModule m);
 	RequestComponent build();
 }

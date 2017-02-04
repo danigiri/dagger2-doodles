@@ -42,7 +42,11 @@ public URIModule(String u) {
 @Provides
 public URI provideURI()  {
 	try {
+
+		System.err.println("Provider for URI called");
+	
 		return new URI(uri);
+
 	} catch (URISyntaxException e) {
 		throw new RuntimeException(e);
 	}

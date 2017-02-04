@@ -26,13 +26,14 @@ import javax.inject.Named;
 *///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 public class Document {
 
-private String name;
+protected String name;
 protected URI uri;
 protected String content;
+protected Metadata metadata;
 
 
 @Inject
-public Document(String name, URI uri, @Named("Content") String content) {
+public Document(String name, URI uri, String content) {
 
 	System.err.println("New Document instance with name '"+name+" @Inject(ed)");
 
@@ -41,6 +42,7 @@ public Document(String name, URI uri, @Named("Content") String content) {
 	this.content = content;
 	
 }
+
 
 public Document(String name, URI u) {
 
@@ -51,17 +53,30 @@ public Document(String name, URI u) {
 
 }
 
+public Document(String name, URI uri, String content, Metadata m) {
+	this.name = name;
+	this.uri = uri;
+	this.content = content;
+	this.metadata = m;
+}
+
+
+
 public static String metadataUriFromContent(String c) throws Exception {
 
 	System.err.println("metadataUriFromContent('"+ c+"') called");
 
-	int metadataIndex = c.indexOf("/metadata");
-	if (metadataIndex==-1) {
-		throw new Exception("");
+	int metadataStart = c.indexOf("metadata(");
+	if (metadataStart==-1) {
+		throw new Exception("Could not");
 	}
-	return c.substring(metadataIndex);
+	int metadataEnd = c.indexOf(")", metadataStart);
+	String metadataUri = c.substring(metadataStart, metadataEnd);
+
+	return metadataUri;
 	
 }
+
 
 @Override
 public String toString() {

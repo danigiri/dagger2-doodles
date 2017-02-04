@@ -15,17 +15,17 @@ import cat.calidos.doodles.dagger2.basic.URIModule;
 public class DocumentTest {
 
 @Test
-public void testCreateDocument() throws Exception {
+public void testDocumentComponent() throws Exception {
 	
 	Document document = DaggerDocumentComponent.builder()
-		.name(new DocumentModule("name"))
-		.uri(new URIModule("/url"))
+		.documentModule(new DocumentModule("name"))
+		.uRIModule(new URIModule("/url+metadata(/meta)"))
 		.build()
 		.createDocument();
 	
 	assertEquals("name", document.getName());
-	assertEquals("/url", document.getURI().getPath());
-	assertEquals("{content:requested(/url)}",document.getContent());
+	assertEquals("/url+metadata(/meta)", document.getURI().getPath());
+	assertEquals("{content:requested:{/url+metadata(/meta)}}",document.getContent());
 	
 }
 
