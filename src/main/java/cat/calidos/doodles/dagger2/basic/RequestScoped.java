@@ -16,21 +16,12 @@
 
 package cat.calidos.doodles.dagger2.basic;
 
-import java.net.URI;
-
-import cat.calidos.doodles.dagger2.dependencies.Request;
-import dagger.Module;
-import dagger.Provides;
+import javax.inject.Scope;
 
 /**
 * @author daniel giribet
 *///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-@Module
-public class RequestModule {
-
-@Provides
-Request provideRequest(URI uri) {
-	return new Request(uri);
-}
+@Scope
+public @interface RequestScoped {
 
 }

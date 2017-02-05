@@ -16,12 +16,14 @@
 
 package cat.calidos.doodles.dagger2.basic;
 
+import javax.inject.Named;
+
 import dagger.Component;
 
 /**
 * @author daniel giribet
 *///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-@Component(modules={DocumentModule.class, ClientModule.class, RequestModule.class}, dependencies=URIModule.class)
+@Component(modules={DocumentModule.class, ClientModule.class, URIModule.class})
 public interface DocumentComponent {
 
 Document createDocument();
@@ -29,7 +31,7 @@ Document createDocument();
 @Component.Builder
 public interface Builder {
 	Builder name(DocumentModule m);
-	Builder uri(URIModule m);
+	@Named("DocURI") Builder uri(URIModule m);
 	DocumentComponent build();
 }
 

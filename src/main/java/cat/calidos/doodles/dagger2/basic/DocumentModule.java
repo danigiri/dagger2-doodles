@@ -45,7 +45,7 @@ public DocumentModule(String name) {
 
 
 @Provides
-Document provideDocument(URI u, @Named("Content") String content ) { //, Metadata m) {
+Document provideDocument(@Named("DocURI") URI u, @Named("DocContent") String content ) { //, Metadata m) {
 	return new Document(name, u, content);
 }
 
@@ -66,7 +66,7 @@ public Request provideContentRequest(Provider<RequestComponent.Builder> rcp, URI
 }
 
 
-@Provides @Named("Content")
+@Provides @Named("DocContent")
 public String provideContent(Client c, @Named("ContentRequest") Request r)  {
 	String content;
 	try {

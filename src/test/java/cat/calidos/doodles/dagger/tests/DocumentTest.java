@@ -18,8 +18,8 @@ public class DocumentTest {
 public void testDocumentComponent() throws Exception {
 	
 	Document document = DaggerDocumentComponent.builder()
-		.documentModule(new DocumentModule("name"))
-		.uRIModule(new URIModule("/url+metadata(/meta)"))
+		.name(new DocumentModule("name"))
+		.uri(new URIModule("/url+metadata(/meta)"))
 		.build()
 		.createDocument();
 	

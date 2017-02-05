@@ -25,7 +25,8 @@ import dagger.Subcomponent;
 /**
 * @author daniel giribet
 *///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-@Subcomponent(modules={RequestModule.class,URIModule.class})
+@RequestScoped
+@Subcomponent(modules={RequestModule.class, URIModule.class})
 public interface RequestComponent {
 
 Request get();
