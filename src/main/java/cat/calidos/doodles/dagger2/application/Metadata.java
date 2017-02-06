@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package cat.calidos.doodles.dagger2.basic;
+package cat.calidos.doodles.dagger2.application;
 
 import java.net.URI;
 

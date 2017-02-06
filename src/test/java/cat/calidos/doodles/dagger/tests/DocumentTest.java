@@ -6,8 +6,8 @@ import java.net.URISyntaxException;
 
 import org.junit.Test;
 
+import cat.calidos.doodles.dagger2.application.Document;
 import cat.calidos.doodles.dagger2.basic.DaggerDocumentComponent;
-import cat.calidos.doodles.dagger2.basic.Document;
 import cat.calidos.doodles.dagger2.basic.DocumentModule;
 import cat.calidos.doodles.dagger2.basic.URIModule;
 

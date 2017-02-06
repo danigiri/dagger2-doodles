@@ -40,7 +40,7 @@ public URIModule(String u) {
 
 
 @Provides
-public URI provideURI()  {
+public URI provideURI() {
 	try {
 		return new URI(uri);
 	} catch (URISyntaxException e) {

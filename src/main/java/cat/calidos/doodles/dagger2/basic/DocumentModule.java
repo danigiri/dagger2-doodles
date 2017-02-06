@@ -23,6 +23,7 @@ import java.util.concurrent.ExecutionException;
 import javax.inject.Named;
 import javax.inject.Provider;
 
+import cat.calidos.doodles.dagger2.application.Document;
 import cat.calidos.doodles.dagger2.basic.RequestComponent.Builder;
 import cat.calidos.doodles.dagger2.dependencies.Client;
 import cat.calidos.doodles.dagger2.dependencies.Request;
