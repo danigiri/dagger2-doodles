@@ -1,5 +1,5 @@
 /*
- *    Copyright 2016 Daniel Giribet
+ *    Copyright 2017 Daniel Giribet
  *
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
@@ -14,25 +14,22 @@
  *   limitations under the License.
  */
 
-package cat.calidos.doodles.dagger2.basic;
+package cat.calidos.doodles.dagger2.producers;
 
-import cat.calidos.doodles.dagger2.application.Document;
+import java.net.URI;
+import java.net.URISyntaxException;
+
+import com.google.common.util.concurrent.ListenableFuture;
+
 import dagger.BindsInstance;
-import dagger.Component;
+import dagger.producers.ProductionComponent;
 
 /**
 * @author daniel giribet
 *///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-@Component(modules={DocumentModule.class, ClientModule.class, RequestModule.class, URIModule.class})
-public interface DocumentComponent {
+@ProductionComponent(modules = {URIProducerModule.class, ExecutorModule.class})
+public interface URIProducerComponent { 
 
-Document createDocument();
-
-@Component.Builder
-public interface Builder {
-	@BindsInstance Builder name(String name);
-	Builder uri(URIModule m);
-	DocumentComponent build();
-}
+ListenableFuture<URI> uri() throws URISyntaxException;
 
 }

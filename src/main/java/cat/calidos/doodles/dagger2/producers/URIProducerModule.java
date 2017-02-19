@@ -14,25 +14,31 @@
  *   limitations under the License.
  */
 
-package cat.calidos.doodles.dagger2.basic;
+package cat.calidos.doodles.dagger2.producers;
 
-import cat.calidos.doodles.dagger2.application.Document;
-import dagger.BindsInstance;
-import dagger.Component;
+import java.net.URI;
+import java.net.URISyntaxException;
+
+import com.google.common.util.concurrent.ListenableFuture;
+
+import dagger.producers.ProducerModule;
+import dagger.producers.Produces;
 
 /**
 * @author daniel giribet
 *///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-@Component(modules={DocumentModule.class, ClientModule.class, RequestModule.class, URIModule.class})
-public interface DocumentComponent {
+@ProducerModule
+public class URIProducerModule {
 
-Document createDocument();
+private String uri;
 
-@Component.Builder
-public interface Builder {
-	@BindsInstance Builder name(String name);
-	Builder uri(URIModule m);
-	DocumentComponent build();
+public URIProducerModule(String u) {
+	this.uri = u;
+}
+
+@Produces
+URI uri() throws URISyntaxException {
+		return new URI(uri);
 }
 
 }

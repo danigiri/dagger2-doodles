@@ -40,13 +40,8 @@ public class DocumentModule {
 private String name;
 private String uri;
 
-public DocumentModule(String name) {
-	this.name = name;	
-}
-
-
 @Provides
-Document provideDocument(URI u, @Named("Content") String content) {
+Document provideDocument(String name, URI u, @Named("Content") String content) {
 	return new Document(name, u, content);
 	
 }

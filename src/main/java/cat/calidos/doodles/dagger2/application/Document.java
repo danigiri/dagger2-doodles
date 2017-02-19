@@ -34,7 +34,7 @@ protected String content;
 @Inject
 public Document(String name, URI uri, @Named("Content") String content) {
 
-	System.err.println("New Document instance with name '"+name+" @Inject(ed)");
+	System.err.println("New Document instance with name '"+name+"' + content @Inject(ed)");
 
 	this.name = name;
 	this.uri = uri;
@@ -44,7 +44,7 @@ public Document(String name, URI uri, @Named("Content") String content) {
 
 public Document(String name, URI u) {
 
-	System.err.println("New Document instance with name '"+name+" @Inject(ed)");
+	System.err.println("New Document instance with name '"+name+"' @Inject(ed)");
 
 	this.name = name;
 	this.uri = u;
