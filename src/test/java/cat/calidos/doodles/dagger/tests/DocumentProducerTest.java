@@ -22,11 +22,9 @@ import java.util.concurrent.ExecutionException;
 
 import org.junit.Test;
 
-import com.google.common.util.concurrent.ListenableFuture;
 
 import cat.calidos.doodles.dagger2.application.Document;
 import cat.calidos.doodles.dagger2.producers.DaggerDocumentProducerComponent;
-import cat.calidos.doodles.dagger2.producers.DocumentProducerComponent.Builder;
 import cat.calidos.doodles.dagger2.producers.URIProducerModule;
 
 
