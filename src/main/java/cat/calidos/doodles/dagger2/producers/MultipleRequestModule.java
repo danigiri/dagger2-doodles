@@ -16,27 +16,29 @@
 
 package cat.calidos.doodles.dagger2.producers;
 
-import com.google.common.util.concurrent.ListenableFuture;
+import java.net.URI;
 
-import cat.calidos.doodles.dagger2.application.Document;
-import cat.calidos.doodles.dagger2.basic.ClientModule;
-import dagger.BindsInstance;
-import dagger.producers.ProductionComponent;
+import cat.calidos.doodles.dagger2.basic.DaggerRequestComponent;
+import cat.calidos.doodles.dagger2.basic.URIModule;
+import cat.calidos.doodles.dagger2.dependencies.Request;
+import dagger.Module;
+import dagger.Provides;
+import dagger.producers.ProducerModule;
+import dagger.producers.Produces;
 
 /**
 * @author daniel giribet
 *///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-@ProductionComponent(modules = {DocumentProducerModule.class, URIProducerModule.class, ClientModule.class, ExecutorModule.class})
-public interface DocumentProducerComponent {
+@Module
+public class MultipleRequestModule {
 
-ListenableFuture<Document> fetchDocument();
 
-@ProductionComponent.Builder
-public interface Builder {
-	@BindsInstance Builder name(String name);
-	Builder uri(URIProducerModule m);
-	DocumentProducerComponent build();
+@Provides
+public static Request produceRequest(URI u) {
+
+	return null;
 }
 
-}
 
+
+}

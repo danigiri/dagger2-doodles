@@ -29,4 +29,15 @@ public void testCreateDocument() throws Exception {
 	
 }
 
+@Test
+public void testWrongURL() {
+	
+	Document document = DaggerDocumentComponent.builder()
+			.name("name")
+			.uri(new URIModule("/url"))
+			.build()
+			.createDocument();
+
+}
+
 }

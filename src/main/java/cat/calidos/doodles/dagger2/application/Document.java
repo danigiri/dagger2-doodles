@@ -31,8 +31,7 @@ protected URI uri;
 protected String content;
 
 
-@Inject
-public Document(String name, URI uri, @Named("Content") String content) {
+public Document(String name, URI uri, String content) {
 
 	System.err.println("New Document instance with name '"+name+"' + content @Inject(ed)");
 

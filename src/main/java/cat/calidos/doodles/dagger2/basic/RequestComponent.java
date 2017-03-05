@@ -16,11 +16,8 @@
 
 package cat.calidos.doodles.dagger2.basic;
 
-import java.net.URI;
-
 import cat.calidos.doodles.dagger2.dependencies.Request;
 import dagger.Component;
-import dagger.Subcomponent;
 
 /**
 * @author daniel giribet

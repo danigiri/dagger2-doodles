@@ -38,7 +38,8 @@ public URIProducerModule(String u) {
 
 @Produces
 URI uri() throws URISyntaxException {
-		return new URI(uri);
+	System.err.println("[module] Producer for URI called");
+	return new URI(uri);
 }
 
 }

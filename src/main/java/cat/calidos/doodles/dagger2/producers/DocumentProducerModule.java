@@ -17,8 +17,15 @@
 package cat.calidos.doodles.dagger2.producers;
 
 import java.net.URI;
+import java.util.concurrent.ExecutionException;
+
+import javax.inject.Named;
 
 import cat.calidos.doodles.dagger2.application.Document;
+import cat.calidos.doodles.dagger2.dependencies.Client;
+import cat.calidos.doodles.dagger2.dependencies.Request;
+import cat.calidos.doodles.dagger2.dependencies.RequestException;
+import dagger.producers.Produced;
 import dagger.producers.ProducerModule;
 import dagger.producers.Produces;
 
@@ -29,8 +36,37 @@ import dagger.producers.Produces;
 public class DocumentProducerModule {
 
 @Produces
-Document fetchDocument(String name, URI u) {
-	return new Document(name, u);
+Document fetchDocument(String name, URI u, @Named("Content") Produced<String> contentProducer) {
+	
+	System.err.println("[module] Producer for Document called");
+	String content;
+	try {
+		content = contentProducer.get();	
+	} catch (ExecutionException e) {
+		content = "NOTFOUND("+u+")";
+	}
+	
+	return new Document(name, u, content);
+
+}
+
+
+@Produces @Named("Content")
+String fetchContent(Client c, URI u) throws RequestException {
+	
+	Request request = DaggerRequestComponent2.builder()
+						.uri(u)
+						.build()
+						.request();
+	String content;
+	try {
+		content = c.performRequest(request);
+	} catch (RequestException e) {
+		throw new RuntimeException(e);
+	} finally {
+		c.close();
+	}
+	return "{content:"+content+"}";
 }
 
 }

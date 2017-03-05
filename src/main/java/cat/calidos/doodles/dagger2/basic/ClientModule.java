@@ -1,5 +1,5 @@
 /*
- *    Copyright 2016 Daniel Giribet
+ *    Copyright 2017 Daniel Giribet
  *
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ public class ClientModule {
 @Provides
 public static Client provideClient() {
 
-	System.err.println("Provider for Client called");
+	System.err.println("[module] Provider for Client called");
 
 	return new Client();
 

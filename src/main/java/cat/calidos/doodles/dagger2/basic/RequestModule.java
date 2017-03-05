@@ -39,7 +39,9 @@ Request provideRequest(URI uri) {
 @Provides
 RequestComponent.Builder provideBuilder() {
 	try {
-		return (RequestComponent.Builder) Class.forName("cat.calidos.doodles.dagger2.basic.DaggerRequestComponent").getDeclaredMethod("builder", null).invoke(null, null);
+		return (RequestComponent.Builder) Class.forName("cat.calidos.doodles.dagger2.basic.DaggerRequestComponent")
+				.getDeclaredMethod("builder", null)
+				.invoke(null, null);
 	} catch (IllegalAccessException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

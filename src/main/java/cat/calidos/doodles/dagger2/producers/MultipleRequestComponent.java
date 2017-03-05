@@ -1,5 +1,5 @@
 /*
- *    Copyright 2017 Daniel Giribet
+ *    Copyright 2016 Daniel Giribet
  *
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
@@ -16,27 +16,10 @@
 
 package cat.calidos.doodles.dagger2.producers;
 
-import com.google.common.util.concurrent.ListenableFuture;
-
-import cat.calidos.doodles.dagger2.application.Document;
-import cat.calidos.doodles.dagger2.basic.ClientModule;
-import dagger.BindsInstance;
-import dagger.producers.ProductionComponent;
 
 /**
 * @author daniel giribet
 *///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-@ProductionComponent(modules = {DocumentProducerModule.class, URIProducerModule.class, ClientModule.class, ExecutorModule.class})
-public interface DocumentProducerComponent {
-
-ListenableFuture<Document> fetchDocument();
-
-@ProductionComponent.Builder
-public interface Builder {
-	@BindsInstance Builder name(String name);
-	Builder uri(URIProducerModule m);
-	DocumentProducerComponent build();
-}
+public interface MultipleRequestComponent {
 
 }
-
