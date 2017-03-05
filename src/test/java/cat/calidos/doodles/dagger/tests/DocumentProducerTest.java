@@ -74,7 +74,6 @@ public void testWrongURI() throws Exception {
 public void testRequestException() throws Exception {
 	
 	boolean failed = false;
-	Document d = null;
 	try {
 		DaggerDocumentProducerComponent.builder()
 				.name("name")
