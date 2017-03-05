@@ -36,16 +36,21 @@ import dagger.producers.Produces;
 public class DocumentProducerModule {
 
 @Produces
-Document fetchDocument(String name, URI u, @Named("Content") Produced<String> contentProducer) {
+Document fetchDocument(String name, URI u, @Named("Content") Produced<String> contentProducer) throws RequestException, ExecutionException {
 	
 	System.err.println("[module] Producer for Document called");
-	String content;
+	String content = null;
 	try {
 		content = contentProducer.get();	
-	} catch (ExecutionException e) {
-		content = "NOTFOUND("+u+")";
+	} catch (ExecutionException ee) {
+		Throwable e = ee.getCause();
+		if (e instanceof RequestException) {
+			throw (RequestException)e;
+		} else {
+			throw ee;
+		}
 	}
-	
+
 	return new Document(name, u, content);
 
 }
@@ -61,12 +66,12 @@ String fetchContent(Client c, URI u) throws RequestException {
 	String content;
 	try {
 		content = c.performRequest(request);
-	} catch (RequestException e) {
-		throw new RuntimeException(e);
 	} finally {
 		c.close();
 	}
+
 	return "{content:"+content+"}";
+
 }
 
 }

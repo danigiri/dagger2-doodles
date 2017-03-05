@@ -24,6 +24,7 @@ import java.util.concurrent.ExecutionException;
 import org.junit.Test;
 
 import cat.calidos.doodles.dagger2.application.Document;
+import cat.calidos.doodles.dagger2.dependencies.RequestException;
 import cat.calidos.doodles.dagger2.producers.DaggerDocumentProducerComponent;
 import cat.calidos.doodles.dagger2.producers.URIProducerModule;
 
@@ -49,12 +50,12 @@ public void testDocumentProducer() throws InterruptedException, ExecutionExcepti
 
 }
 
-//@Test
+@Test
 public void testWrongURI() throws Exception {
 	
 	boolean failed = false;
 	try {
-		Document document = DaggerDocumentProducerComponent.builder()
+		DaggerDocumentProducerComponent.builder()
 				.name("name")
 				.uri(new URIProducerModule("wrong url"))
 				.build()
@@ -62,6 +63,27 @@ public void testWrongURI() throws Exception {
 				.get();
 	} catch (ExecutionException e) {
 		assertTrue(e.getCause() instanceof URISyntaxException);
+		failed = true;
+	}
+	assertTrue(failed);
+	
+}
+
+
+@Test
+public void testRequestException() throws Exception {
+	
+	boolean failed = false;
+	Document d = null;
+	try {
+		DaggerDocumentProducerComponent.builder()
+				.name("name")
+				.uri(new URIProducerModule("/uri-request-error"))
+				.build()
+				.fetchDocument()
+				.get();
+	} catch (ExecutionException e) {
+		assertTrue(e.getCause() instanceof RequestException);
 		failed = true;
 	}
 	assertTrue(failed);

@@ -23,7 +23,7 @@ import java.net.URI;
 *///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 public class Request {
 
-private static final int REQUEST_TIME = 200;
+private static final int REQUEST_TIME = 100;
 private URI uri;
 
 public Request(URI uri) {
