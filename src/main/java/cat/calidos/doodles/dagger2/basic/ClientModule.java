@@ -16,9 +16,6 @@
 
 package cat.calidos.doodles.dagger2.basic;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-
 import cat.calidos.doodles.dagger2.dependencies.Client;
 import dagger.Module;
 import dagger.Provides;

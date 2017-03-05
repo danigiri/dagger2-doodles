@@ -18,9 +18,6 @@ package cat.calidos.doodles.dagger2.application;
 
 import java.net.URI;
 
-import javax.inject.Inject;
-import javax.inject.Named;
-
 /**
 * @author daniel giribet
 *///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

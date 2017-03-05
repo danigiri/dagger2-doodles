@@ -2,13 +2,10 @@ package cat.calidos.doodles.dagger.tests;
 
 import static org.junit.Assert.*;
 
-import java.net.URISyntaxException;
-
 import org.junit.Test;
 
 import cat.calidos.doodles.dagger2.application.Document;
 import cat.calidos.doodles.dagger2.basic.DaggerDocumentComponent;
-import cat.calidos.doodles.dagger2.basic.DocumentModule;
 import cat.calidos.doodles.dagger2.basic.URIModule;
 
 
@@ -29,15 +26,15 @@ public void testCreateDocument() throws Exception {
 	
 }
 
-@Test
-public void testWrongURL() {
-	
-	Document document = DaggerDocumentComponent.builder()
-			.name("name")
-			.uri(new URIModule("/url"))
-			.build()
-			.createDocument();
-
-}
+//@Test
+//public void testWrongURL() {
+//	
+//	Document document = DaggerDocumentComponent.builder()
+//			.name("name")
+//			.uri(new URIModule("/url"))
+//			.build()
+//			.createDocument();
+//
+//}
 
 }
